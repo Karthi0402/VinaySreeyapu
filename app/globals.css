@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #151F1A;
+  --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-gold-light: #FFD100;
+  --color-gold-dark: #60510A;
+  --color-track-dark: #343434;
+
+  --background-image-gold-radial: radial-gradient(circle at center, var(--color-gold-light) 0%, var(--color-gold-dark) 100%);
+
+  /* Add this line right here! */
+  --font-nightwatch: var(--font-nightwatch);
+  --font-brand: var(--font-brand);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+
+  /* 3. Create a custom utility JUST for gradient text */
+  .text-gold-radial {
+    background-image: var(--background-image-gold-radial);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gold-radial-figma {
+    background: radial-gradient(67.57% 66.67% at 46.29% 33.33%,
+        #FFD100,
+        #60510A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* The Uniform Grid */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+  background-size: 20px 20px;
+  background-position: top left;
+
+  margin: 0;
+  line-height: normal;
+}
+
+/* --- PREMIUM CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Makes the scrollbar nice and thin */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+  /* Matches your dark green background perfectly */
+  border-left: 1px solid rgba(255, 209, 0, 0.05);
+  /* Very subtle gold line separating the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #60510A;
+  /* Dark gold for the resting state */
+  border-radius: 10px;
+  /* Smooth rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD100;
+  /* Bright gold when the user hovers/drags it */
 }

@@ -1,0 +1,14 @@
+<svg width="94" height="38" viewBox="0 0 94 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Right">
+<mask id="path-1-inside-1_2087_123" fill="white">
+<path d="M94 19C94 8.50659 85.4934 0 75 0H19C8.50658 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38H75C85.4934 38 94 29.4934 94 19Z"/>
+</mask>
+<path d="M94 0H0H94M94 0M0 38H94H0M76 38C86.4934 38 95 29.4934 95 19C95 8.50659 86.4934 0 76 0H75C84.9411 0 93 8.50659 93 19C93 29.4934 84.9411 38 75 38H76ZM75 38M0 0V38V0" fill="url(#paint0_radial_2087_123)" mask="url(#path-1-inside-1_2087_123)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_2087_123" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(47 19) scale(1.09035 819)">
+<stop stop-opacity="0"/>
+<stop offset="1" stop-color="#FFD100"/>
+</radialGradient>
+</defs>
+</svg>
