@@ -1,5 +1,3 @@
-// src/data/projects.ts
-
 export type Project = {
   id: string;
   title: string;
@@ -14,20 +12,20 @@ export const projectsData: Project[] = [
     title: "IDNTT PRODUCT",
     category: "GENZ JEWELRY ECOMMERCE PRODUCT",
     tags: ["PRODUCT DISCOVERY", "UX STRATEGY", "WIREFRAMING", "UI UX"],
-    imagePath: "/projects/idntt.svg", 
+    imagePath: "/projects/IDNTT Product.jpg",
   },
   {
     id: "merascorp",
     title: "MERASCORP LLP",
     category: "REAL-ESTATE WEBSITE REVAMP",
     tags: ["WEBSITE REVAMP", "BUSINESS STRATEGY", "WEBSITE DESIGN"],
-    imagePath: "/projects/merascorp.svg",
+    imagePath: "/projects/Merascorp LLP.jpg",
   },
   {
     id: "novus",
     title: "NOVUS PRODUCT",
     category: "SMART RING APPLICATION",
     tags: ["APPLICATION DESIGN", "PRODUCT RESEARCH", "UX STRATEGY", "IA"],
-    imagePath: "/projects/novus.svg",
+    imagePath: "/projects/Novus Product.jpg",
   },
 ];

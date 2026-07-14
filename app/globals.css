@@ -60,7 +60,7 @@ body {
 
 /* --- PREMIUM CUSTOM SCROLLBAR --- */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   /* Makes the scrollbar nice and thin */
 }
 

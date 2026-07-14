@@ -1,46 +1,12 @@
 "use client";
 
-import { useState, useMemo, useRef, useLayoutEffect } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GradientText from "../ui/GradientText";
-
-function useFitText(maxFontSize: number, minFontSize = 20) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLHeadingElement>(null);
-  const [fontSize, setFontSize] = useState(maxFontSize);
-
-  useLayoutEffect(() => {
-    function fit() {
-      if (!containerRef.current || !textRef.current) return;
-
-      const containerWidth = containerRef.current.offsetWidth;
-
-      // Measure natural width at max size first
-      textRef.current.style.fontSize = `${maxFontSize}px`;
-      const naturalWidth = textRef.current.scrollWidth;
-
-      const ratio = containerWidth / naturalWidth;
-      const next = Math.min(
-        maxFontSize,
-        Math.max(minFontSize, maxFontSize * ratio),
-      );
-
-      setFontSize(next);
-    }
-
-    fit();
-    window.addEventListener("resize", fit);
-    return () => window.removeEventListener("resize", fit);
-  }, [maxFontSize, minFontSize]);
-
-  return { containerRef, textRef, fontSize };
-}
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [hovered, setHovered] = useState(false);
-
-  const { containerRef, textRef, fontSize } = useFitText(150, 28);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText("VINAYSREEYAPU@GMAIL.COM");
@@ -69,8 +35,10 @@ export default function Contact() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden min-h-screen px-8 lg:px-20 pt-20 pb-16 flex flex-col justify-between">
-      {/* --- TOP SECTION --- */}
+    // FIX: Removed `min-h-screen` and `justify-between` so it doesn't stretch artificially
+    <section className="relative overflow-hidden w-full px-6 lg:px-20 pt-20 pb-12 flex flex-col mt-12 md:mt-44">
+      
+      {/* --- TOP SECTION (Developer Credit) --- */}
       <div className="flex justify-end">
         <div className="text-right">
           <p className="font-brand text-[10px] tracking-[0.2em] uppercase text-[#FFD100]/60">
@@ -82,7 +50,7 @@ export default function Contact() {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
-            {/* Continuous ambient halo - breathes gently at all times, independent of hover */}
+            {/* Continuous ambient halo */}
             <motion.div
               aria-hidden
               className="absolute inset-0 rounded-full blur-xl pointer-events-none"
@@ -114,9 +82,7 @@ export default function Contact() {
                 color: "transparent",
               }}
               animate={{
-                // Slow, classic gold shimmer sweep - always running
                 backgroundPosition: ["0% center", "300% center"],
-                // Soft continuous glow pulse, intensifying further on hover
                 filter: hovered
                   ? [
                       "drop-shadow(0 0 4px rgba(255,209,0,.5))",
@@ -130,23 +96,15 @@ export default function Contact() {
                     ],
               }}
               transition={{
-                backgroundPosition: {
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "linear",
-                },
-                filter: {
-                  duration: hovered ? 1.4 : 3.2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
+                backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" },
+                filter: { duration: hovered ? 1.4 : 3.2, repeat: Infinity, ease: "easeInOut" },
               }}
               whileHover={{ scale: 1.05 }}
             >
               VENKATA KARTHEEK
             </motion.a>
 
-            {/* Classic underline that draws in and fades, on a continuous loop */}
+            {/* Classic underline */}
             <motion.div
               aria-hidden
               className="absolute left-1/2 -bottom-0.5 h-[1px] bg-gradient-to-r from-transparent via-[#FFD100] to-transparent pointer-events-none"
@@ -155,7 +113,7 @@ export default function Contact() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Ambient sparkles - always drifting, subtle */}
+            {/* Ambient sparkles */}
             {ambientParticles.map((p) => {
               const angle = (360 / ambientParticles.length) * p.id;
               return (
@@ -184,7 +142,7 @@ export default function Contact() {
               );
             })}
 
-            {/* Hover burst - amplifies the ambient sparkle into a fuller ring on hover */}
+            {/* Hover burst */}
             <AnimatePresence>
               {hovered &&
                 particles.map((p) => {
@@ -235,50 +193,47 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* --- BOTTOM SECTION --- */}
-      <div className="mt-auto">
-        {/* FIX: Removed overflow-x-hidden, added generous top/bottom padding, and set leading-normal */}
-        <div ref={containerRef} className="w-full py-6 flex items-center">
+      {/* --- BOTTOM SECTION (Your Email & Socials) --- */}
+      {/* FIX: Changed `mt-auto` to a specific margin `mt-24 md:mt-32` so the gap is perfectly controlled */}
+      <div className="w-full mt-24 md:mt-52">
+        
+        <div className="w-full flex flex-col items-start">
           <motion.h2
-            ref={textRef}
-            style={{ fontSize: `${fontSize}px` }}
-            className="font-nightwatch leading-normal tracking-[-0.02em] whitespace-nowrap text-gold-radial-figma cursor-default inline-block"
+            className="font-nightwatch leading-none tracking-[-0.02em] whitespace-nowrap text-gold-radial-figma cursor-default text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3.5vw]"
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.4 }}
           >
             VINAYSREEYAPU
-            {/* By using 0.6em, the @ will always be exactly 60% of the surrounding text size, keeping it proportional no matter how big the screen is! */}
             <span
-              style={{ fontSize: "0.6em", verticalAlign: "middle" }}
+              style={{ fontSize: "0.65em", verticalAlign: "middle" }}
               className="mx-1"
             >
               @
             </span>
             GMAIL.COM
           </motion.h2>
+
+          <button
+            onClick={handleCopy}
+            className="mt-2 font-brand uppercase tracking-[0.2em] text-[10px] text-[#FFD100]/60 hover:text-[#FFD100] transition-colors cursor-pointer"
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={copied ? "copied" : "copy"}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.2 }}
+                className="inline-block"
+              >
+                {copied ? "COPIED ✓" : "COPY EMAIL"}
+              </motion.span>
+            </AnimatePresence>
+          </button>
         </div>
 
-        {/* Copy Email */}
-        <button
-          onClick={handleCopy}
-          className="mt-2 block font-brand uppercase tracking-[0.2em] text-[10px] text-[#FFD100]/60 hover:text-[#FFD100] transition-colors cursor-pointer"
-        >
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={copied ? "copied" : "copy"}
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25 }}
-              className="inline-block"
-            >
-              {copied ? "COPIED ✓" : "COPY EMAIL"}
-            </motion.span>
-          </AnimatePresence>
-        </button>
-
         {/* Social row */}
-        <div className="mt-10 lg:mt-12 flex justify-end gap-10 lg:gap-14">
+        <div className="mt-12 lg:mt-16 flex justify-start md:justify-end gap-8 lg:gap-14 flex-wrap">
           <GradientText href="https://www.behance.net/vinayrsreeyap">
             Behance
           </GradientText>

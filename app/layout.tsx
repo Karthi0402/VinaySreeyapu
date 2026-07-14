@@ -48,7 +48,7 @@ export default function RootLayout({
       className={`${headlineFont.variable} ${subheadingFont.variable} h-full antialiased overflow-x-hidden`}
     >
       <body className="min-h-full flex flex-col">
-        <TabObserver />
+        {/* <TabObserver /> */}
         {children}
       </body>
     </html>

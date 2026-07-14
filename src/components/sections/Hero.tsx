@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GradientText from "../ui/GradientText";
+import TypingText from "../ui/TypingText";
 
 const greetings = [
   { text: "안녕하세요", lang: "ko" },
@@ -15,8 +16,6 @@ const greetings = [
   { text: "నమస్కారం", lang: "te" },
   { text: "வணக்கம்", lang: "ta" },
 ];
-
-const complexScriptLangs = ["hi", "te", "ta"];
 
 export default function Hero() {
   const [greetingIndex, setGreetingIndex] = useState(0);
@@ -54,7 +53,7 @@ export default function Hero() {
       {/* We use 'relative w-fit' so the absolute elements lock exactly to the edges of the text */}
       <div className="relative w-fit max-w-full flex flex-col justify-center">
         {/* Top Left Pinned: Greeting */}
-        <div className="absolute bottom-full left-1 mb-2 md:mb-4 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em] uppercase">
+        <div className="absolute bottom-full left-1 mb-2 md:mb-0 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em]">
           <AnimatePresence mode="popLayout">
             <motion.span
               key={greetingIndex}
@@ -67,11 +66,7 @@ export default function Hero() {
                 times: [0, 0.6, 1],
                 ease: ["easeOut", "easeIn"],
               }}
-              className={`text-gold-radial-figma text-[16px] absolute top-0 left-0 leading-normal ${
-                complexScriptLangs.includes(greetings[greetingIndex].lang)
-                  ? "font-sans"
-                  : "font-brand"
-              }`}
+              className={`text-gold-radial-figma text-[16px] absolute top-0 left-0 leading-normal leading-[21px] tracking-normal font-brand`}
             >
               {greetings[greetingIndex].text}
             </motion.span>
@@ -94,12 +89,12 @@ export default function Hero() {
           VINAY SREEYAPU
         </h1>
         {/* Bottom Right Pinned: Ampersand */}
-        <div className="text-gold-radial-figma absolute top-full right-1 mt-2 md:mt-4 font-brand text-[#FFD100] text-sm md:text-base">
+        <div className="absolute text-gold-radial-figma top-full right-1 -mt-1 md:-mt-2 font-brand text-[#FFD100] text-sm md:text-base">
           &
         </div>
 
         {/* Bottom Left Pinned: Title */}
-        <div className="text-gold-radial-figma absolute top-full left-1 mt-2 md:mt-4 flex flex-col items-start font-brand text-[16px] md:text-[10px] tracking-[0.2em] uppercase">
+        <div className="absolute text-gold-radial-figma top-full left-1 -mt-1 md:-mt-2 flex flex-col items-start font-brand text-[10px] md:text-[12px] tracking-normal uppercase leading-[21px]">
           <span className="text-[#FFD100]/60 mb-0.5">HERE</span>
           <div>
             <span className="text-[#FFD100]/60">I&apos;M A </span>
@@ -135,10 +130,22 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="text-gold-radial-figma font-brand text-[14px] flex flex-col gap-1 text-[#FFD100]"
+                className="text-gold-radial-figma font-brand text-[14px] flex flex-col gap-1"
               >
-                <span>HYD</span>
-                <span>IST {currentTime}</span>
+                <TypingText
+                  key={`city-${isLocHovered}`}
+                  text="HYDERABAD"
+                  speed={40}
+                  className="text-gold-radial-figma"
+                />
+
+                <TypingText
+                  key={`time-${currentTime}-${isLocHovered}`}
+                  text={`IST ${currentTime}`}
+                  speed={40}
+                  delay={500}
+                  className="text-gold-radial-figma"
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -147,9 +154,15 @@ export default function Hero() {
 
       {/* --- FAR BOTTOM RIGHT: Social Links --- */}
       <div className="absolute bottom-8 right-6 md:right-12 flex flex-col items-end gap-2 font-brand text-[#FFD100]/70 text-[10px] md:text-xs tracking-[0.2em] uppercase">
-        <GradientText href="https://www.behance.net/vinayrsreeyap">Behance</GradientText>
-        <GradientText href="https://www.linkedin.com/in/vinayreddysr">LINKEDIN</GradientText>
-        <GradientText href="https://www.instagram.com/sreeyapu_vinayreddy">INSTAGRAM</GradientText>
+        <GradientText href="https://www.behance.net/vinayrsreeyap">
+          Behance
+        </GradientText>
+        <GradientText href="https://www.linkedin.com/in/vinayreddysr">
+          LINKEDIN
+        </GradientText>
+        <GradientText href="https://www.instagram.com/sreeyapu_vinayreddy">
+          INSTAGRAM
+        </GradientText>
       </div>
     </section>
   );

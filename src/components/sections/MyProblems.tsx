@@ -28,8 +28,7 @@ export default function MyProblems() {
       {/* SECTION HEADER */}
       <div className="mb-12 md:mb-16">
         <span className="font-brand text-[10px] md:text-xs tracking-[0.2em] uppercase">
-          <span className="text-[#FFD100]/60">MY </span>
-          <span className="text-[#FFD100]">PROBLEMS</span>
+          <span className="text-gold-radial-figma font-brand">MY PROBLEMS</span>
         </span>
       </div>
 

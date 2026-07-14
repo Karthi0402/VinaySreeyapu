@@ -40,10 +40,9 @@ export default function RecentWorks() {
 
         <button className="group flex flex-col items-center font-brand text-[10px] md:text-xs tracking-[0.2em] uppercase hover:scale-105 transition-transform duration-300">
           <div>
-            <span className="text-[#FFD100]/60 group-hover:text-[#FFD100] transition-colors">
-              ALL{" "}
+            <span className="text-gold-radial-figma text-[#FFD100]/60 group-hover:text-[#FFD100] transition-colors">
+              ALL PROJECTS
             </span>
-            <span className="text-[#FFD100]">PROJECTS</span>
           </div>
           {/* Animated underline effect on hover */}
           <div className="h-[1px] w-6 bg-[#FFD100] mt-1 group-hover:w-full transition-all duration-300" />
