@@ -120,11 +120,11 @@ export default function Hero() {
     uppercase
     tracking-normal
 
-    text-[10px] leading-[17px]
-    sm:text-[11px] sm:leading-[18px]
-    md:text-[12px] md:leading-[19px]
-    lg:text-[13px] lg:leading-[20px]
-    xl:text-[14px] xl:leading-[px]
+    text-[11px] leading-[16px]
+          sm:text-[13px] sm:leading-[19px]
+          md:text-[14px] md:leading-[20px]
+          lg:text-[15px] lg:leading-[21px]
+          xl:text-[16px] xl:leading-[22px]
   "
         >
           <span>HERE</span>
