@@ -1,6 +1,8 @@
+// src/app/page.tsx
 "use client";
 
-import { useState } from "react";
+// FIX 1: Import useEffect
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import SplashScreen from "../src/components/ui/SplashScreen";
 import Navbar from "../src/components/layout/Navbar";
@@ -14,8 +16,13 @@ import GetInTouch from "../src/components/sections/GetInTouch";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-
   const [activeNavIndex, setActiveNavIndex] = useState(0);
+
+  // FIX 2: Add this useEffect to force scroll-to-top on tab change
+  useEffect(() => {
+    // Whenever activeNavIndex changes, scroll the window to the absolute top
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [activeNavIndex]);
 
   const renderActiveView = () => {
     switch (activeNavIndex) {
@@ -27,12 +34,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="w-full col-start-1 row-start-1"
+            className="w-full col-start-1 row-start-1 px-12"
           >
             <Hero />
             <div className="h-[100px] lg:h-[180px]" />
             <Intro />
-            <RecentWorks />
+            <RecentWorks setActiveIndex={setActiveNavIndex} />
             <MyProblems />
             <Contact />
           </motion.div>
@@ -81,10 +88,8 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          // CRITICAL FIX: Changed overflow-hidden to overflow-x-hidden so vertical scrolling works!
           className="min-h-screen flex flex-col relative"
         >
-          {/* If you want the Navbar to follow you down the page, change its class inside Navbar.tsx to 'fixed top-0' */}
           <Navbar
             activeIndex={activeNavIndex}
             setActiveIndex={setActiveNavIndex}

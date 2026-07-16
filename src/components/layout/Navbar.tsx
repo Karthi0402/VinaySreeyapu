@@ -98,21 +98,14 @@ export default function Navbar({ activeIndex, setActiveIndex }: NavbarProps) {
                   className={`
                     absolute
                     -top-2
-                    h-[1.5px]
-                    w-6
+                    h-[0.5px]
+                    w-10
                     sm:w-7
                     lg:w-8
                     bg-gradient-to-r
                     from-transparent
                     via-[#FFD100]
-                    to-transparent
-                    transition-all
-                    duration-300
-                    ${
-                      isActive
-                        ? "opacity-100 shadow-[0_0_8px_rgba(255,209,0,0.6)]"
-                        : "opacity-0"
-                    }
+                    ${isActive ? "opacity-100" : "opacity-0"}
                   `}
                 />
 
@@ -120,15 +113,15 @@ export default function Navbar({ activeIndex, setActiveIndex }: NavbarProps) {
                 <span
                   className={`
                     font-brand
-                    tracking-[0.15em]
                     transition-all
                     duration-300
-                    text-[10px]
-                    leading-[18px]
+                    leading-[23px]
                     tracking-normal
-                    sm:text-[11px]
-                    md:text-xs
-                    lg:text-[14px]
+                    text-[14px]
+                    sm:text-[15px]
+                    md:text-[16px]
+                    lg:text-[17px]
+                    xl:text-[18px]
                     ${
                       isActive
                         ? "text-gold-radial-figma font-medium"
@@ -144,21 +137,14 @@ export default function Navbar({ activeIndex, setActiveIndex }: NavbarProps) {
                   className={`
                     absolute
                     -bottom-2
-                    h-[1.5px]
-                    w-6
+                    h-[0.5px]
+                    w-10
                     sm:w-7
                     lg:w-8
                     bg-gradient-to-r
                     from-transparent
                     via-[#FFD100]
-                    to-transparent
-                    transition-all
-                    duration-300
-                    ${
-                      isActive
-                        ? "opacity-100 shadow-[0_0_8px_rgba(255,209,0,0.6)]"
-                        : "opacity-0"
-                    }
+                    ${isActive ? "opacity-100" : "opacity-0"}
                   `}
                 />
               </motion.button>

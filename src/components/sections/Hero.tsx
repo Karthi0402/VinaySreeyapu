@@ -48,12 +48,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-[80vh] flex flex-col justify-center items-center px-4 md:px-12">
+    <section className="relative w-full min-h-[80vh] flex flex-col justify-center items-center">
       {/* --- CENTER: Name & Pinned Annotations --- */}
       {/* We use 'relative w-fit' so the absolute elements lock exactly to the edges of the text */}
       <div className="relative w-fit max-w-full flex flex-col justify-center">
         {/* Top Left Pinned: Greeting */}
-        <div className="absolute bottom-full left-1 mb-2 md:mb-0 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em]">
+        <div className="absolute bottom-full left-0 mb-2 md:mb-0 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em]">
           <AnimatePresence mode="popLayout">
             <motion.span
               key={greetingIndex}
@@ -66,7 +66,11 @@ export default function Hero() {
                 times: [0, 0.6, 1],
                 ease: ["easeOut", "easeIn"],
               }}
-              className={`text-gold-radial-figma text-[16px] absolute top-0 left-0 leading-normal leading-[21px] tracking-normal font-brand`}
+              className={`text-gold-radial-figma absolute top-0 left-0 leading-normal leading-[21px] tracking-normal font-brand text-[12px] leading-[17px]
+    sm:text-[13px] sm:leading-[18px]
+    md:text-[14px] md:leading-[19px]
+    lg:text-[15px] lg:leading-[20px]
+    xl:text-[16px] xl:leading-[21px]`}
             >
               {greetings[greetingIndex].text}
             </motion.span>
@@ -78,8 +82,8 @@ export default function Hero() {
           className="
     font-nightwatch
     text-gold-radial-figma
-    text-[9vw]
-    lg:text-[10vw]
+    text-[10vw]
+    lg:text-[11vw]
     leading-none
     tracking-[-0.04em]
     pr-4
@@ -89,16 +93,43 @@ export default function Hero() {
           VINAY SREEYAPU
         </h1>
         {/* Bottom Right Pinned: Ampersand */}
-        <div className="absolute text-gold-radial-figma top-full right-1 -mt-1 md:-mt-2 font-brand text-[#FFD100] text-sm md:text-base">
+        <div
+          className="absolute text-gold-radial-figma top-full right-1 -mt-1 md:-mt-2 font-brand 
+    text-[12px] leading-[17px]
+    sm:text-[15px] sm:leading-[20px]
+    md:text-[16px] md:leading-[21px]
+    lg:text-[17px] lg:leading-[22px]
+    xl:text-[18px] xl:leading-[23px]"
+        >
           &
         </div>
 
         {/* Bottom Left Pinned: Title */}
-        <div className="absolute text-gold-radial-figma top-full left-1 -mt-1 md:-mt-2 flex flex-col items-start font-brand text-[10px] md:text-[12px] tracking-normal uppercase leading-[21px]">
-          <span className="text-[#FFD100]/60 mb-0.5">HERE</span>
+        <div
+          className="
+    absolute
+    text-gold-radial-figma
+    top-full
+    left-1
+    -mt-1
+    md:-mt-2
+    flex
+    flex-col
+    items-start
+    font-brand
+    uppercase
+    tracking-normal
+
+    text-[10px] leading-[17px]
+    sm:text-[11px] sm:leading-[18px]
+    md:text-[12px] md:leading-[19px]
+    lg:text-[13px] lg:leading-[20px]
+    xl:text-[14px] xl:leading-[px]
+  "
+        >
+          <span>HERE</span>
           <div>
-            <span className="text-[#FFD100]/60">I&apos;M A </span>
-            <span className="text-[#FFD100]">PRODUCT DESIGNER</span>
+            <span>I&apos;M A PRODUCT DESIGNER </span>
           </div>
         </div>
       </div>
@@ -118,7 +149,14 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="text-gold-radial-figma font-brand text-[14px] flex flex-col gap-1"
+                className="text-gold-radial-figma font-brand  
+                tracking-normal 
+                text-[11px] leading-[16px]
+          sm:text-[13px] sm:leading-[19px]
+          md:text-[14px] md:leading-[20px]
+          lg:text-[15px] lg:leading-[21px]
+          xl:text-[16px] xl:leading-[22px]
+                flex flex-col gap-1"
               >
                 <span>17°23&apos;N</span>
                 <span>78°29&apos;E</span>
@@ -130,7 +168,12 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="text-gold-radial-figma font-brand text-[14px] flex flex-col gap-1"
+                className="text-gold-radial-figma font-brand flex flex-col gap-1 
+                tracking-normal text-[11px] leading-[16px]
+          sm:text-[13px] sm:leading-[19px]
+          md:text-[14px] md:leading-[20px]
+          lg:text-[15px] lg:leading-[21px]
+          xl:text-[16px] xl:leading-[22px]"
               >
                 <TypingText
                   key={`city-${isLocHovered}`}

@@ -4,20 +4,33 @@
 import { projectsData } from "../../data/projects";
 import ProjectRow from "../ui/ProjectRow";
 
-export default function RecentWorks() {
+interface NavbarProps {
+  setActiveIndex: (index: number | ((prev: number) => number)) => void;
+}
+
+export default function RecentWorks({ setActiveIndex }: NavbarProps) {
   // Grab only the first 3 projects for the homepage
   const recentProjects = projectsData.slice(0, 3);
+
+  const handleProjectsClick = () => {
+    setActiveIndex(1);
+  };
 
   return (
     <section className="relative w-full flex flex-col px-6 md:px-16 py-24">
       {/* SECTION HEADER */}
       <div className="flex flex-col w-full mb-4">
-        <span className="font-brand text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4">
-          <span className="text-[#FFD100]">RECENT</span>{" "}
-          <span className="text-[#FFD100]/60">WORKS</span>
+        <span
+          className="text-gold-radial-figma font-brand text-[12px] leading-[17px]
+    sm:text-[15px] sm:leading-[20px]
+    md:text-[16px] md:leading-[21px]
+    lg:text-[17px] lg:leading-[22px]
+    xl:text-[18px] xl:leading-[23px] tracking-normal uppercase mb-4"
+        >
+          <span className="text-[#FFD100]">RECENT WORKS</span>
         </span>
         {/* Full width gold separator line */}
-        <div className="w-full h-[1px] bg-gradient-to-r from-[#FFD100]/80 via-[#FFD100]/40 to-transparent" />
+        <div className="w-full h-[1px] bg-gradient-to-r from-[#FFD100]/80 via-[#FFD100]/80 to-[#FFD100]/80" />
       </div>
 
       {/* PROJECTS LIST */}
@@ -28,7 +41,7 @@ export default function RecentWorks() {
 
             {/* The horizontal divider line below each project (except the last one) */}
             {index !== recentProjects.length - 1 && (
-              <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FFD100]/30 to-transparent" />
+              <div className="w-full h-[2px] bg-gradient-to-r from-[#FFD100]/30 via-[#FFD100]/30 to-[#FFD100]/30" />
             )}
           </div>
         ))}
@@ -36,16 +49,30 @@ export default function RecentWorks() {
 
       {/* BOTTOM FOOTER / ALL PROJECTS BUTTON */}
       <div className="w-full flex flex-col items-center mt-12 md:mt-20">
-        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FFD100]/60 to-transparent mb-8" />
+        {/* Large section separator */}
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#FFD100]/60 to-transparent mb-12 md:mb-16" />
 
-        <button className="group flex flex-col items-center font-brand text-[10px] md:text-xs tracking-[0.2em] uppercase hover:scale-105 transition-transform duration-300">
-          <div>
-            <span className="text-gold-radial-figma text-[#FFD100]/60 group-hover:text-[#FFD100] transition-colors">
-              ALL PROJECTS
-            </span>
-          </div>
-          {/* Animated underline effect on hover */}
-          <div className="h-[1px] w-6 bg-[#FFD100] mt-1 group-hover:w-full transition-all duration-300" />
+        {/* Navbar-style Static Button */}
+        <button
+          onClick={handleProjectsClick}
+          className="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-105 transition-transform duration-300 py-3"
+        >
+          {/* Top Fading Glowing Line */}
+          <div className="absolute top-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60 group-hover:opacity-100 group-hover:shadow-[0_0_8px_rgba(255,209,0,0.6)] transition-all duration-300" />
+
+          {/* Text */}
+          <span
+            className="font-brand text-[12px] leading-[17px]
+    sm:text-[15px] sm:leading-[20px]
+    md:text-[16px] md:leading-[21px]
+    lg:text-[17px] lg:leading-[22px]
+    xl:text-[18px] xl:leading-[23px] tracking-normal uppercase text-gold-radial-figma font-medium transition-colors"
+          >
+            ALL PROJECTS
+          </span>
+
+          {/* Bottom Fading Glowing Line */}
+          <div className="absolute bottom-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60 group-hover:opacity-100 group-hover:shadow-[0_0_8px_rgba(255,209,0,0.6)] transition-all duration-300" />
         </button>
       </div>
     </section>

@@ -37,16 +37,21 @@ export default function Contact() {
   return (
     // FIX: Removed `min-h-screen` and `justify-between` so it doesn't stretch artificially
     <section className="relative overflow-hidden w-full px-6 lg:px-20 pt-20 pb-12 flex flex-col mt-12 md:mt-44">
-      
-      {/* --- TOP SECTION (Developer Credit) --- */}
+      {/* --- TOP SECTION --- */}
       <div className="flex justify-end">
-        <div className="text-right">
-          <p className="font-brand text-[10px] tracking-[0.2em] uppercase text-[#FFD100]/60">
+        <div className="flex flex-col items-start">
+          <p
+            className="font-brand tracking-normal text-gold-radial-figma uppercase text-[10px] leading-[17px]
+sm:text-[11px] sm:leading-[18px]
+md:text-[12px] md:leading-[19px]
+lg:text-[13px] lg:leading-[20px]
+xl:text-[14px] xl:leading-[px]"
+          >
             HUGE THANKS TO
           </p>
 
           <div
-            className="relative inline-block mt-2 mb-2 px-2 py-1"
+            className="relative inline-block mt-2 mb-2"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
@@ -72,7 +77,11 @@ export default function Contact() {
             <motion.a
               href="https://www.linkedin.com/in/karthi0402/"
               target="_blank"
-              className="relative z-20 font-brand uppercase tracking-[0.15em] text-sm inline-block cursor-pointer"
+              className="relative z-20 font-brand uppercase tracking-normal text-gold-radial-figma text-sm inline-block cursor-pointer text-[10px] leading-[17px]
+sm:text-[11px] sm:leading-[18px]
+md:text-[12px] md:leading-[19px]
+lg:text-[13px] lg:leading-[20px]
+xl:text-[14px] xl:leading-[px]"
               style={{
                 backgroundImage:
                   "linear-gradient(90deg, #FFD100 0%, #fff6c0 20%, #FFD100 40%, #b8860b 60%, #FFD100 80%, #fff6c0 100%)",
@@ -96,8 +105,16 @@ export default function Contact() {
                     ],
               }}
               transition={{
-                backgroundPosition: { duration: 5, repeat: Infinity, ease: "linear" },
-                filter: { duration: hovered ? 1.4 : 3.2, repeat: Infinity, ease: "easeInOut" },
+                backgroundPosition: {
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "linear",
+                },
+                filter: {
+                  duration: hovered ? 1.4 : 3.2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
               }}
               whileHover={{ scale: 1.05 }}
             >
@@ -187,7 +204,13 @@ export default function Contact() {
             </AnimatePresence>
           </div>
 
-          <p className="font-brand text-[10px] tracking-[0.2em] uppercase text-[#FFD100]/60">
+          <p
+            className="font-brand tracking-normal text-gold-radial-figma uppercase text-[10px] leading-[17px]
+sm:text-[11px] sm:leading-[18px]
+md:text-[12px] md:leading-[19px]
+lg:text-[13px] lg:leading-[20px]
+xl:text-[14px] xl:leading-[px]"
+          >
             FOR THE DEVELOPMENT.
           </p>
         </div>
@@ -196,21 +219,20 @@ export default function Contact() {
       {/* --- BOTTOM SECTION (Your Email & Socials) --- */}
       {/* FIX: Changed `mt-auto` to a specific margin `mt-24 md:mt-32` so the gap is perfectly controlled */}
       <div className="w-full mt-24 md:mt-52">
-        
         <div className="w-full flex flex-col items-start">
           <motion.h2
-            className="font-nightwatch leading-none tracking-[-0.02em] whitespace-nowrap text-gold-radial-figma cursor-default text-[6vw] sm:text-[5vw] md:text-[4vw] lg:text-[3.5vw]"
+            className="font-nightwatch leading-none tracking-normal whitespace-nowrap text-gold-radial-figma cursor-default text-[clamp(1.5rem,6vw,4.5rem)]"
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.4 }}
           >
-            VINAYSREEYAPU
+            vinaysreeyapu
             <span
               style={{ fontSize: "0.65em", verticalAlign: "middle" }}
               className="mx-1"
             >
               @
             </span>
-            GMAIL.COM
+            gmail.com
           </motion.h2>
 
           <button
