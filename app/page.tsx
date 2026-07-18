@@ -13,18 +13,42 @@ import MyProblems from "../src/components/sections/MyProblems";
 import Contact from "../src/components/sections/Contact";
 import AllWorks from "../src/components/sections/AllProjects";
 import GetInTouch from "../src/components/sections/GetInTouch";
+import ProjectDetails from "../src/components/sections/ProjectDetails"; // IMPORT THIS!
+import { projectsData } from "../src/data/allprojects"; // Import your data so we can find the "Next" project
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeNavIndex, setActiveNavIndex] = useState(0);
+  
+  // NEW STATE: Tracks which project is currently being viewed
+  const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
-  // FIX 2: Add this useEffect to force scroll-to-top on tab change
+  // Scroll to top on nav change OR when a project is selected
   useEffect(() => {
-    // Whenever activeNavIndex changes, scroll the window to the absolute top
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [activeNavIndex]);
+  }, [activeNavIndex, selectedProject]);
+
+  // Handle "Next Project" logic
+  const handleNextProject = () => {
+    if (!selectedProject) return;
+    const currentIndex = projectsData.findIndex(p => p.id === selectedProject.id);
+    const nextIndex = (currentIndex + 1) % projectsData.length;
+    setSelectedProject(projectsData[nextIndex]);
+  };
 
   const renderActiveView = () => {
+    // If a project is selected, OVERRIDE the normal views and show the details!
+    if (selectedProject) {
+      return (
+        <ProjectDetails 
+          key="project-details" 
+          project={selectedProject} 
+          onBack={() => setSelectedProject(null)} 
+          onNext={handleNextProject}
+        />
+      );
+    }
+
     switch (activeNavIndex) {
       case 0:
         return (
@@ -34,12 +58,13 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="w-full col-start-1 row-start-1"
+            className="w-full col-start-1 row-start-1 px-12"
           >
             <Hero />
             <div className="h-[100px] lg:h-[180px]" />
             <Intro />
-            <RecentWorks setActiveIndex={setActiveNavIndex} />
+            {/* Pass setSelectedProject to RecentWorks so they can click it from the home page too! */}
+            <RecentWorks setActiveIndex={setActiveNavIndex} onProjectSelect={setSelectedProject} />
             <MyProblems />
             <Contact />
           </motion.div>
@@ -48,58 +73,48 @@ export default function Home() {
         return (
           <motion.div
             key="works-view"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            // ... (keep existing animation props)
             className="w-full col-start-1 row-start-1"
           >
-            <AllWorks />
+            {/* Pass it to AllWorks */}
+            <AllWorks onProjectSelect={setSelectedProject} />
           </motion.div>
         );
       case 2:
         return (
           <motion.div
-            key="contact-view"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
+            key="works-view"
+            // ... (keep existing animation props)
             className="w-full col-start-1 row-start-1"
           >
-            <GetInTouch />
+            {/* Pass it to AllWorks */}
+            <GetInTouch/>
           </motion.div>
         );
-      default:
-        return null;
+      // ... keep case 2 and default
     }
   };
 
   return (
-    <>
-      <AnimatePresence>
-        {isLoading && (
-          <SplashScreen duration={3.5} onComplete={() => setIsLoading(false)} />
-        )}
-      </AnimatePresence>
-
-      {!isLoading && (
+    // ... keep existing return wrapper structure
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className="min-h-screen flex flex-col relative"
         >
-          <Navbar
-            activeIndex={activeNavIndex}
-            setActiveIndex={setActiveNavIndex}
-          />
+          {/* Hide Navbar when viewing project details for maximum cinematic effect (Optional, but recommended based on your design) */}
+          <AnimatePresence>
+            {!selectedProject && (
+              <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+                <Navbar activeIndex={activeNavIndex} setActiveIndex={setActiveNavIndex} />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <main className="w-full relative flex-1">
-            <AnimatePresence>{renderActiveView()}</AnimatePresence>
+            <AnimatePresence mode="wait">{renderActiveView()}</AnimatePresence>
           </main>
         </motion.div>
-      )}
-    </>
   );
 }

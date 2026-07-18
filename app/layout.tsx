@@ -33,8 +33,12 @@ const subheadingFont = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Vinay Sreeyapu — Product Designer",
-  description: "Portfolio of Vinay Sreeyapu",
+  title: "UI/UX, Product & Visual Designer  |  Vinay Sreeyapu",
+  description:
+    "Product and Visual Designer focused on solving real problems through research, design, and execution.",
+  alternates: {
+    canonical: "https://vinaysreeyapu.com/",
+  },
 };
 
 export default function RootLayout({

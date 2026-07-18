@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import GradientText from "../ui/GradientText";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [particles, setParticles] = useState<any[]>([]);
+  const [ambientParticles, setAmbientParticles] = useState<any[]>([]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText("VINAYSREEYAPU@GMAIL.COM");
@@ -14,24 +16,26 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 1800);
   };
 
-  const particles = useMemo(() => {
-    return Array.from({ length: 16 }, (_, i) => ({
-      id: i,
-      size: 3 + Math.random() * 4,
-      delay: Math.random() * 2,
-      duration: 2 + Math.random() * 2,
-      radius: 24 + Math.random() * 36,
-    }));
-  }, []);
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 16 }, (_, i) => ({
+        id: i,
+        size: 3 + Math.random() * 4,
+        delay: Math.random() * 2,
+        duration: 2 + Math.random() * 2,
+        radius: 24 + Math.random() * 36,
+      })),
+    );
 
-  const ambientParticles = useMemo(() => {
-    return Array.from({ length: 6 }, (_, i) => ({
-      id: i,
-      size: 2 + Math.random() * 2,
-      delay: Math.random() * 4,
-      duration: 5 + Math.random() * 3,
-      radius: 30 + Math.random() * 40,
-    }));
+    setAmbientParticles(
+      Array.from({ length: 6 }, (_, i) => ({
+        id: i,
+        size: 2 + Math.random() * 2,
+        delay: Math.random() * 4,
+        duration: 5 + Math.random() * 3,
+        radius: 30 + Math.random() * 40,
+      })),
+    );
   }, []);
 
   return (

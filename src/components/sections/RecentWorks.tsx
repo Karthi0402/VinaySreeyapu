@@ -1,16 +1,17 @@
 // src/components/sections/RecentWorks.tsx
 "use client";
 
-import { projectsData } from "../../data/projects";
+import { projectsData } from "../../data/allprojects";
 import ProjectRow from "../ui/ProjectRow";
 
 interface NavbarProps {
   setActiveIndex: (index: number | ((prev: number) => number)) => void;
+  onProjectSelect: (p: any) => void;
 }
 
-export default function RecentWorks({ setActiveIndex }: NavbarProps) {
+export default function RecentWorks({ setActiveIndex, onProjectSelect }: NavbarProps) {
   // Grab only the first 3 projects for the homepage
-  const recentProjects = projectsData.slice(0, 3);
+  const recentProjects = projectsData.slice(0, 4);
 
   const handleProjectsClick = () => {
     setActiveIndex(1);
@@ -36,7 +37,7 @@ export default function RecentWorks({ setActiveIndex }: NavbarProps) {
       {/* PROJECTS LIST */}
       <div className="flex flex-col w-full">
         {recentProjects.map((project, index) => (
-          <div key={project.id} className="w-full">
+          <div key={project.id} className="w-full" onClick={() => onProjectSelect(project)}>
             <ProjectRow project={project} />
 
             {/* The horizontal divider line below each project (except the last one) */}
