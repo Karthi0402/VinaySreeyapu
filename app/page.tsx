@@ -34,7 +34,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="w-full col-start-1 row-start-1 px-12"
+            className="w-full col-start-1 row-start-1"
           >
             <Hero />
             <div className="h-[100px] lg:h-[180px]" />

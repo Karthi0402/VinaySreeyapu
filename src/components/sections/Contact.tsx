@@ -248,7 +248,7 @@ xl:text-[14px] xl:leading-[px]"
                 transition={{ duration: 0.2 }}
                 className="inline-block"
               >
-                {copied ? "COPIED ✓" : "COPY EMAIL"}
+                {copied ? "COPIED" : "COPY EMAIL"}
               </motion.span>
             </AnimatePresence>
           </button>

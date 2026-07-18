@@ -7,10 +7,9 @@ import {
   motion,
   useMotionValue,
   useSpring,
-  useTransform,
 } from "framer-motion";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface ProjectRowProps {
   project: Project;
@@ -18,33 +17,63 @@ interface ProjectRowProps {
 
 export default function ProjectRow({ project }: ProjectRowProps) {
   const [hovered, setHovered] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+  // Fallback size used before the image has ever been measured
+  const sizeRef = useRef({ width: 320, height: 400 });
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const x = useSpring(mouseX, {
+  const x = useSpring(0, {
     stiffness: 220,
     damping: 22,
   });
 
-  const y = useSpring(mouseY, {
+  const y = useSpring(0, {
     stiffness: 220,
     damping: 22,
   });
 
-  const rotate = useTransform(mouseX, [-300, 300], [-8, 8]);
+  function getOffset(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const { width, height } = sizeRef.current;
+    return {
+      offsetX: e.clientX - rect.left - width / 2,
+      offsetY: e.clientY - rect.top - height / 2,
+    };
+  }
+
+  function handleEnter(e: React.MouseEvent<HTMLDivElement>) {
+    if (imgRef.current) {
+      const { width, height } = imgRef.current.getBoundingClientRect();
+      if (width && height) {
+        sizeRef.current = { width, height };
+      }
+    }
+
+    const { offsetX, offsetY } = getOffset(e);
+
+    x.jump(offsetX);
+    y.jump(offsetY);
+
+    setHovered(true);
+  }
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect();
+    if (imgRef.current) {
+      const { width, height } = imgRef.current.getBoundingClientRect();
+      if (width && height) {
+        sizeRef.current = { width, height };
+      }
+    }
 
-    mouseX.set(e.clientX - rect.left - 120);
-    mouseY.set(e.clientY - rect.top - 220);
+    const { offsetX, offsetY } = getOffset(e);
+
+    x.set(offsetX);
+    y.set(offsetY);
   }
 
   return (
     <div
       className="relative w-full py-8 md:py-24 cursor-pointer group overflow-visible"
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleEnter}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMove}
     >
@@ -52,14 +81,14 @@ export default function ProjectRow({ project }: ProjectRowProps) {
       <AnimatePresence>
         {hovered && (
           <motion.div
-            style={{ x, y, rotate }}
-            initial={{ opacity: 0, scale: 0.85, y: 40 }}
+            style={{ x, y }}
+            initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.35 }}
             className="hidden md:block absolute left-0 top-0 z-10 pointer-events-none"
           >
-            <div className="relative">
+            <div ref={imgRef} className="relative">
               <div className="absolute inset-0 rounded-3xl bg-[#FFD100]/8 blur-xl scale-105" />
               <img
                 src={project.imagePath}
@@ -81,9 +110,7 @@ export default function ProjectRow({ project }: ProjectRowProps) {
       </AnimatePresence>
 
       {/* Title & Category Wrapper */}
-      {/* flex-col-reverse puts the Category on top for mobile, md:flex-row puts them side-by-side for desktop */}
       <div className="relative z-20 flex flex-col-reverse md:flex-row md:items-end justify-between w-full gap-2 md:gap-0">
-        {/* Title */}
         <motion.h3
           whileHover={{ x: 12 }}
           transition={{ duration: 0.35 }}
@@ -99,7 +126,6 @@ export default function ProjectRow({ project }: ProjectRowProps) {
           {project.title}
         </motion.h3>
 
-        {/* Category */}
         <div className="flex justify-start md:justify-end md:mb-1">
           <span className="text-gold-radial-figma font-brand text-[18px] sm:text-[16px] md:text-[14px] tracking-normal leading-[23px] tracking-normal uppercase">
             {project.category}
@@ -108,7 +134,6 @@ export default function ProjectRow({ project }: ProjectRowProps) {
       </div>
 
       {/* Tags */}
-      {/* flex-col for mobile vertical stacking, md:flex-row for desktop horizontal layout */}
       <div className="relative z-20 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-3 mt-8 md:mt-6 overflow-hidden">
         {project.tags.map((tag, index) => (
           <div key={tag} className="flex items-center gap-3">
@@ -129,7 +154,6 @@ export default function ProjectRow({ project }: ProjectRowProps) {
               {tag}
             </span>
 
-            {/* Pipe Separator - Hidden on mobile (hidden md:block) */}
             {index !== project.tags.length - 1 && (
               <span className="hidden md:block text-[#FFD100]/30 transition-all duration-300">
                 |

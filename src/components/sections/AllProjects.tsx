@@ -11,7 +11,7 @@ export default function AllWorks() {
   return (
     <section className="relative w-full flex flex-col px-6 md:px-16 py-24">
       {/* SECTION HEADER */}
-      <div className="flex flex-col w-full mb-4">
+      <div className="flex flex-col w-full mb-8">
         <span
           className="text-gold-radial-figma font-brand text-[12px] leading-[17px]
     sm:text-[15px] sm:leading-[20px]

@@ -105,7 +105,7 @@ export default function GetInTouch() {
         transition={{ duration: 0.2 }}
         className="inline-block"
       >
-        {copied ? "COPIED ✓" : "COPY EMAIL"}
+        {copied ? "COPIED" : "COPY EMAIL"}
       </motion.span>
     </AnimatePresence>
   </button>
