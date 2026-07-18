@@ -116,18 +116,17 @@ export default function ProjectRow({ project }: ProjectRowProps) {
           transition={{ duration: 0.35 }}
           className="
             font-nightwatch
-            text-[11vw]
-            md:text-[5vw]
-            leading-none
             text-gold-radial-figma
-            tracking-tight
+            text-[clamp(2.5rem,6vw,5.5rem)]
+            leading-none
+            tracking-[-0.04em]
           "
         >
           {project.title}
         </motion.h3>
 
         <div className="flex justify-start md:justify-end md:mb-1">
-          <span className="text-gold-radial-figma font-brand text-[18px] sm:text-[16px] md:text-[14px] tracking-normal leading-[23px] tracking-normal uppercase">
+          <span className="text-gold-radial-figma font-brand text-[14px] leading-normal tracking-normal uppercase">
             {project.category}
           </span>
         </div>
@@ -141,12 +140,8 @@ export default function ProjectRow({ project }: ProjectRowProps) {
               className="
                 text-gold-radial-figma
                 font-brand
-                text-[18px]
-                sm:text-[16px] 
-                md:text-[14px]
+                text-[14px] md:text-[18px] font-medium leading-normal tracking-normal
                 uppercase
-                tracking-normal
-                leading-[23px]
                 transition-all
                 duration-300
               "

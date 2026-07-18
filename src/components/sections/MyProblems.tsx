@@ -30,11 +30,8 @@ export default function MyProblems() {
       {/* SECTION HEADER */}
       <div className="mb-12 md:mb-16">
         <span
-          className="font-brand text-[12px] leading-[17px]
-    sm:text-[15px] sm:leading-[20px]
-    md:text-[16px] md:leading-[21px]
-    lg:text-[17px] lg:leading-[22px]
-    xl:text-[18px] xl:leading-[23px] tracking-normal  uppercase"
+          className="font-brand 
+          text-[14px] md:text-[18px] font-medium leading-normal tracking-normal  uppercase"
         >
           <span className="text-gold-radial-figma font-brand">MY PROBLEMS</span>
         </span>
@@ -62,13 +59,7 @@ export default function MyProblems() {
             </h2>
 
             {/* The Subtitle Description */}
-            <p
-              className="font-brand text-gold-radial-figma tracking-normal text-[11px] leading-[16px]
-          sm:text-[13px] sm:leading-[19px]
-          md:text-[14px] md:leading-[20px]
-          lg:text-[15px] lg:leading-[21px]
-          xl:text-[16px] xl:leading-[22px] uppercase mt-2 md:mt-4 max-w-[90%] md:max-w-none"
-            >
+            <p className="font-brand text-gold-radial-figma text-[14px] md:text-[16px] font-medium leading-normal tracking-normal uppercase mt-2 md:mt-4 max-w-[90%] md:max-w-none">
               {problem.description}
             </p>
           </motion.div>

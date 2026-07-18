@@ -196,7 +196,7 @@ export default function Hero() {
       </div>
 
       {/* --- FAR BOTTOM RIGHT: Social Links --- */}
-      <div className="absolute bottom-8 right-6 md:right-12 flex flex-col items-end gap-2 font-brand text-[#FFD100]/70 text-[10px] md:text-xs tracking-[0.2em] uppercase">
+      <div className="absolute bottom-8 right-6 md:right-12 flex flex-col items-end gap-2.5 font-brand text-[#FFD100]/70 text-[10px] md:text-xs tracking-[0.2em] uppercase">
         <GradientText href="https://www.behance.net/vinayrsreeyap">
           Behance
         </GradientText>

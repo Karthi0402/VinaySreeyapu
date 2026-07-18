@@ -30,11 +30,7 @@ export default function GradientText({
           duration-300
           group-hover:opacity-0
 
-          tracking-normal text-[12px] leading-[17px]
-          sm:text-[15px] sm:leading-[20px]
-          md:text-[16px] md:leading-[21px]
-          lg:text-[17px] lg:leading-[22px]
-          xl:text-[18px] xl:leading-[23px]
+          text-[14px] md:text-[18px] font-medium leading-normal tracking-normal
         "
       >
         {children}
