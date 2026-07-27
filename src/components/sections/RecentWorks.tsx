@@ -3,13 +3,17 @@
 
 import { projectsData } from "../../data/allprojects";
 import ProjectRow from "../ui/ProjectRow";
+import GradientText from "../ui/GradientText";
 
 interface NavbarProps {
   setActiveIndex: (index: number | ((prev: number) => number)) => void;
   onProjectSelect: (p: any) => void;
 }
 
-export default function RecentWorks({ setActiveIndex, onProjectSelect }: NavbarProps) {
+export default function RecentWorks({
+  setActiveIndex,
+  onProjectSelect,
+}: NavbarProps) {
   // Grab only the first 3 projects for the homepage
   const recentProjects = projectsData.slice(0, 4);
 
@@ -18,7 +22,7 @@ export default function RecentWorks({ setActiveIndex, onProjectSelect }: NavbarP
   };
 
   return (
-    <section className="relative w-full flex flex-col px-6 md:px-16 py-24">
+    <section className="relative w-full flex flex-col px-6 md:px-16 py-40">
       {/* SECTION HEADER */}
       <div className="flex flex-col w-full mb-4">
         <span
@@ -37,7 +41,11 @@ export default function RecentWorks({ setActiveIndex, onProjectSelect }: NavbarP
       {/* PROJECTS LIST */}
       <div className="flex flex-col w-full">
         {recentProjects.map((project, index) => (
-          <div key={project.id} className="w-full" onClick={() => onProjectSelect(project)}>
+          <div
+            key={project.id}
+            className="w-full"
+            onClick={() => onProjectSelect(project)}
+          >
             <ProjectRow project={project} />
 
             {/* The horizontal divider line below each project (except the last one) */}
@@ -56,24 +64,24 @@ export default function RecentWorks({ setActiveIndex, onProjectSelect }: NavbarP
         {/* Navbar-style Static Button */}
         <button
           onClick={handleProjectsClick}
-          className="relative flex flex-col items-center justify-center cursor-pointer group hover:scale-105 transition-transform duration-300 py-3"
+          className="relative flex flex-col items-center justify-center cursor-pointer group py-3"
         >
-          {/* Top Fading Glowing Line */}
-          <div className="absolute top-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60 group-hover:opacity-100 group-hover:shadow-[0_0_8px_rgba(255,209,0,0.6)] transition-all duration-300" />
+          {/* Top Line */}
+          <div className="absolute top-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60" />
 
-          {/* Text */}
-          <span
-            className="font-brand text-[12px] leading-[17px]
-    sm:text-[15px] sm:leading-[20px]
-    md:text-[16px] md:leading-[21px]
-    lg:text-[17px] lg:leading-[22px]
-    xl:text-[18px] xl:leading-[23px] tracking-normal uppercase text-gold-radial-figma font-medium transition-colors"
+          <GradientText
+            as="span"
+            className="text-[12px] leading-[17px]
+      sm:text-[15px] sm:leading-[20px]
+      md:text-[16px] md:leading-[21px]
+      lg:text-[17px] lg:leading-[22px]
+      xl:text-[18px] xl:leading-[23px]"
           >
             ALL PROJECTS
-          </span>
+          </GradientText>
 
-          {/* Bottom Fading Glowing Line */}
-          <div className="absolute bottom-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60 group-hover:opacity-100 group-hover:shadow-[0_0_8px_rgba(255,209,0,0.6)] transition-all duration-300" />
+          {/* Bottom Line */}
+          <div className="absolute bottom-0 h-[1.5px] w-8 md:w-10 bg-gradient-to-r from-transparent via-[#FFD100] to-transparent opacity-60" />
         </button>
       </div>
     </section>

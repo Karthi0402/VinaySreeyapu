@@ -17,7 +17,7 @@ const greetings = [
   { text: "வணக்கம்", lang: "ta" },
 ];
 
-// ---- Entrance orchestration (same easing family as Intro) ----
+// ---- Entrance orchestration ----
 const sectionVariants: Variants = {
   hidden: {},
   visible: {
@@ -25,7 +25,6 @@ const sectionVariants: Variants = {
   },
 };
 
-// Add this near your other variants
 const maskReveal: Variants = {
   hidden: { y: "100%", opacity: 0 },
   visible: {
@@ -44,7 +43,7 @@ const fadeUp: Variants = {
   },
 };
 
-// pinned "&" — from the right, mirrors NAMASTE in Intro
+// pinned "&"
 const fromRight: Variants = {
   hidden: { x: "35%", opacity: 0 },
   visible: {
@@ -54,7 +53,6 @@ const fromRight: Variants = {
   },
 };
 
-// pinned "HERE / PRODUCT DESIGNER" — from the left, mirrors rest of Intro
 const fromLeft: Variants = {
   hidden: { x: "-35%", opacity: 0 },
   visible: {
@@ -64,7 +62,7 @@ const fromLeft: Variants = {
   },
 };
 
-// Letter-mask reveal for the main title — same technique as the Intro role cycler
+// Letter-mask reveal
 const titleLetterContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.045, delayChildren: 0.15 } },
@@ -78,11 +76,6 @@ const titleLetter: Variants = {
     filter: "blur(0px)",
     transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
   },
-};
-
-const socialContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.9 } },
 };
 
 function AnimatedTitle({ text }: { text: string }) {
@@ -188,8 +181,7 @@ export default function Hero() {
           &
         </motion.div>
 
-        {/* Bottom Left Pinned: Title — from the left */}
-        {/* Bottom Left Pinned: Title — vertical mask reveal, no side slide */}
+        {/* Bottom Left Pinned: Title — vertical mask reveal */}
         <div
           className="
     absolute
@@ -288,25 +280,23 @@ export default function Hero() {
       </motion.div>
 
       {/* --- FAR BOTTOM RIGHT: Social Links --- */}
+      {/* FIX: Removed the delayed socialContainer and applied the fadeUp variant directly so it matches the coordinates exactly */}
       <motion.div
-        variants={socialContainer}
+        variants={fadeUp}
         className="absolute bottom-8 right-6 md:right-12 flex flex-col items-end gap-2.5 font-brand text-[#FFD100]/70 text-[10px] md:text-xs tracking-[0.2em] uppercase"
       >
-        <motion.div variants={fadeUp}>
-          <GradientText href="https://www.behance.net/vinayrsreeyap">
-            Behance
-          </GradientText>
-        </motion.div>
-        <motion.div variants={fadeUp}>
-          <GradientText href="https://www.linkedin.com/in/vinayreddysr">
-            LINKEDIN
-          </GradientText>
-        </motion.div>
-        <motion.div variants={fadeUp}>
-          <GradientText href="https://www.instagram.com/sreeyapu_vinayreddy">
-            INSTAGRAM
-          </GradientText>
-        </motion.div>
+        <GradientText as="a" href="https://www.behance.net/vinayrsreeyap">
+          Behance
+        </GradientText>
+        <GradientText as="a" href="https://www.linkedin.com/in/vinayreddysr">
+          LINKEDIN
+        </GradientText>
+        <GradientText
+          as="a"
+          href="https://www.instagram.com/sreeyapu_vinayreddy"
+        >
+          INSTAGRAM
+        </GradientText>
       </motion.div>
     </motion.section>
   );

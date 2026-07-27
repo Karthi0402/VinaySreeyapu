@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import TabObserver from "../src/components/ui/TabObserver";
+import Script from "next/script";
 
 const headlineFont = localFont({
   src: "../public/fonts/thenightwatch.ttf",
@@ -51,6 +52,21 @@ export default function RootLayout({
       lang="en"
       className={`${headlineFont.variable} ${subheadingFont.variable} h-full antialiased overflow-x-hidden`}
     >
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-TSDQSLX1PS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TSDQSLX1PS');
+    `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col">
         {/* <TabObserver /> */}
         {children}

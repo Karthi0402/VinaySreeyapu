@@ -127,14 +127,14 @@ function AnimatedRole({ text }: { text: string }) {
       </div>
 
       {/* Sweeping accent underline, timed just behind the letters */}
-      <motion.div
+      {/* <motion.div
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         exit={{ scaleX: 0 }}
         transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         style={{ originX: 1 }}
         className="h-[2px] w-full bg-gradient-to-l from-[#FFD100] to-transparent mt-2"
-      />
+      /> */}
     </motion.div>
   );
 }

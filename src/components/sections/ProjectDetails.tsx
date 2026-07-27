@@ -19,12 +19,12 @@ const TableRow = ({
 }) => (
   <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 py-6 border-b border-[#FFD100]/20">
     {/* Label */}
-    <span className="w-32 font-brand text-[14px] leading-normal tracking-normal uppercase text-[#FFD100]/50 shrink-0">
+    <span className="w-32 font-brand text-[14px] leading-normal tracking-normal uppercase text-[#BA9C12] shrink-0">
       {label}
     </span>
 
     {/* Value */}
-    <div className="flex-1 flex flex-col gap-2 font-brand text-[12px] md:text-[14px] leading-normal tracking-normal uppercase text-[#FFD100]">
+    <div className="flex-1 flex flex-col gap-2 font-brand text-[12px] md:text-[14px] leading-normal tracking-normal uppercase text-[#BA9C12]">
       {children}
     </div>
   </div>
@@ -160,7 +160,7 @@ export default function ProjectDetails({
         <div className="lg:col-span-7 flex flex-col gap-6 font-brand text-[10px] md:text-[11px] leading-[2] tracking-[0.05em] uppercase text-[#FFD100]/70">
           {/* Highlight Quote */}
           {project.quote && (
-            <p className="font-normal text-gold-radial-figma text-[12px] md:text-[14px] leading-[1.86] tracking-normal mb-2">
+            <p className="font-normal text-BA9C12 text-[12px] md:text-[14px] leading-[1.86] tracking-normal mb-2">
               {(() => {
                 const sentences = project.quote.split(". ").filter(Boolean);
 
@@ -181,7 +181,7 @@ export default function ProjectDetails({
           {project.description ? (
             project.description.map((paragraph: string, idx: number) => (
               <p
-                className="font-normal text-gold-radial-figma text-[12px] md:text-[14px] leading-[1.86] tracking-normal mb-2"
+                className="font-normal text-BA9C12 text-[12px] md:text-[14px] leading-[1.86] tracking-normal mb-2"
                 key={idx}
               >
                 {paragraph}
@@ -220,7 +220,7 @@ export default function ProjectDetails({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline underline-offset-4 hover:text-white transition-colors"
+                  className="underline underline-offset-4 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -230,7 +230,6 @@ export default function ProjectDetails({
                 href="#"
                 className="underline underline-offset-4 hover:text-white transition-colors"
               >
-                BEHANCE
               </a>
             )}
           </TableRow>
@@ -243,7 +242,6 @@ export default function ProjectDetails({
                   href={team.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline underline-offset-4 hover:text-white transition-colors"
                 >
                   {team.label}
                 </a>

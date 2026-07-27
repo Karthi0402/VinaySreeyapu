@@ -1,16 +1,58 @@
-import React from "react";
-
 interface GradientTextProps {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  as?: "a" | "span";
 }
 
 export default function GradientText({
   children,
   href = "#",
   className = "",
+  as = "a",
 }: GradientTextProps) {
+  const commonClass = `group relative inline-block uppercase font-medium ${className}`;
+
+  if (as === "span") {
+    return (
+      <span className={commonClass}>
+        {/* Default */}
+        <span
+          className="
+            block
+            bg-[radial-gradient(circle,#FFD100_0%,#60510A_100%)]
+            bg-clip-text
+            font-brand
+            text-transparent
+            transition-opacity
+            duration-300
+            group-hover:opacity-0
+          "
+        >
+          {children}
+        </span>
+
+        {/* Hover */}
+        <span
+          className="
+            absolute
+            inset-0
+            opacity-0
+            bg-[radial-gradient(circle,#60510A_0%,#FFD100_100%)]
+            bg-clip-text
+            font-brand
+            text-transparent
+            transition-opacity
+            duration-300
+            group-hover:opacity-100
+          "
+        >
+          {children}
+        </span>
+      </span>
+    );
+  }
+
   return (
     <a
       href={href}

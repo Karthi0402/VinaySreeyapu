@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import GradientText from "../ui/GradientText";
 import TypingText from "../ui/TypingText";
+import { useFitText } from "../../hooks/Usefittext";
 
 const greetings = [
   { text: "안녕하세요", lang: "ko" },
@@ -16,6 +17,10 @@ const greetings = [
   { text: "నమస్కారం", lang: "te" },
   { text: "வணக்கம்", lang: "ta" },
 ];
+
+const EMAIL_LOCAL = "VINAYSREEYAPU";
+const EMAIL_DOMAIN = "GMAIL.COM";
+const EMAIL_PLAIN = `${EMAIL_LOCAL}@${EMAIL_DOMAIN}`;
 
 // ---- Entrance orchestration ----
 const sectionVariants: Variants = {
@@ -34,16 +39,7 @@ const fadeUp: Variants = {
   },
 };
 
-const maskReveal: Variants = {
-  hidden: { y: "100%", opacity: 0 },
-  visible: {
-    y: "0%",
-    opacity: 1,
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
-  },
-};
-
-// Letter-mask reveal, grouped per word so flex-wrap still breaks correctly
+// Letter-mask reveal, grouped per word
 const wordContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.03 } },
@@ -88,8 +84,17 @@ export default function GetInTouch() {
   const [currentTime, setCurrentTime] = useState("");
   const [copied, setCopied] = useState(false);
 
+  // Measures the container and computes the font-size that makes the email
+  // span exactly 100% of the available width, at any viewport size.
+  // maxFontSize is capped at 102px to match the Figma reference size.
+  const { containerRef, textRef, fontSize } = useFitText({
+    baseFontSize: 100,
+    minFontSize: 24,
+    maxFontSize: 102,
+  });
+
   const handleCopy = async () => {
-    await navigator.clipboard.writeText("VINAYSREEYAPU@GMAIL.COM");
+    await navigator.clipboard.writeText(EMAIL_PLAIN);
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
@@ -124,13 +129,14 @@ export default function GetInTouch() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="relative w-full h-[calc(100dvh-200px)] flex flex-col justify-center items-center px-6 md:px-12"
+      className="relative w-full h-[calc(100dvh-200px)] flex flex-col justify-center"
     >
-      <div className="relative w-full max-w-fit flex flex-col justify-center">
+      {/* CENTER BLOCK */}
+      <div className="relative w-full px-6 md:px-12 flex flex-col justify-center">
         {/* Top Left Pinned: Greeting */}
         <motion.div
           variants={fadeUp}
-          className="absolute bottom-full left-1 mb-0 md:mb-0 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em]"
+          className="absolute bottom-full left-6 md:left-12 mb-0 md:mb-0 h-5 md:h-6 w-24 overflow-hidden font-brand text-[#FFD100]/80 text-[10px] md:text-xs tracking-[0.2em]"
         >
           <AnimatePresence mode="popLayout">
             <motion.span
@@ -151,17 +157,30 @@ export default function GetInTouch() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Main Title: Email — letter-mask reveal, word-grouped */}
-        <h1 className="font-nightwatch leading-[1.1] py-4 tracking-[-0.02em] text-gold-radial-figma cursor-default text-[clamp(2rem,7vw,6rem)] pr-2 md:pr-4 flex flex-wrap items-center sm:justify-start">
-          <AnimatedWord word="VINAYSREEYAPU" />
+        {/* Main Title: Email — fills 100% of the available width at any screen size */}
+        <div ref={containerRef} className="w-full">
+          {/* Hidden measuring node: same font/tracking as the visible title,
+              rendered at baseFontSize, used only to compute scrollWidth. */}
           <span
-            style={{ fontSize: "0.65em", verticalAlign: "middle" }}
-            className="mx-1 md:mx-2 mt-1 md:mt-0"
+            ref={textRef}
+            aria-hidden="true"
+            className="font-nightwatch tracking-[-0.02em] whitespace-nowrap invisible absolute -z-10 pointer-events-none"
+            style={{ fontSize: 100, left: 0, top: 0 }}
           >
-            <AnimatedWord word="@" />
+            {EMAIL_PLAIN}
           </span>
-          <AnimatedWord word="GMAIL.COM" />
-        </h1>
+
+          <h1
+            className="w-full font-nightwatch leading-[1.1] py-4 tracking-[-0.02em] text-gold-radial-figma cursor-default flex items-center justify-start gap-[0.5vw] whitespace-nowrap"
+            style={{ fontSize }}
+          >
+            <AnimatedWord word={EMAIL_LOCAL} />
+            <span style={{ fontSize: "0.65em", verticalAlign: "middle" }}>
+              <AnimatedWord word="@" />
+            </span>
+            <AnimatedWord word={EMAIL_DOMAIN} />
+          </h1>
+        </div>
 
         {/* Bottom Right Pinned: Copy Button */}
         <motion.button
