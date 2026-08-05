@@ -144,14 +144,19 @@ export default function ProjectDetails({
     overflow-hidden
     rounded-[14.75px]
     mb-16
-    border border-transparent
   "
       >
-        <img
-          src={project.mainImage}
-          alt={project.title}
-          className="h-full w-full object-cover"
-        />
+        <picture>
+          {/* Mobile Image */}
+          <source media="(max-width: 767px)" srcSet={project.mobileImage} />
+
+          {/* Desktop Image */}
+          <img
+            src={project.mainImage}
+            alt={project.title}
+            className="h-full w-full object-cover"
+          />
+        </picture>
       </div>
 
       {/* --- DETAILS GRID --- */}
@@ -229,8 +234,7 @@ export default function ProjectDetails({
               <a
                 href="#"
                 className="underline underline-offset-4 hover:text-white transition-colors"
-              >
-              </a>
+              ></a>
             )}
           </TableRow>
 

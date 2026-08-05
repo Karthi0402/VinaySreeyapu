@@ -5,6 +5,7 @@ export type Project = {
   tags: string[];
   imagePath: string;
   mainImage: string;
+  mobileImage?: string;
   quote?: string;
   description?: string[];
   year?: string;
@@ -29,8 +30,9 @@ export const projectsData: Project[] = [
     title: "IDNTT PRODUCT",
     category: "GENZ JEWELRY ECOMMERCE PRODUCT",
     tags: ["PRODUCT DISCOVERY", "UX STRATEGY", "WIREFRAMING", "UI UX"],
-    imagePath: "/projects/IDNTT Product.jpg",
-    mainImage: "/projects/IDNTT Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/IDNTT%20Product.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/IDNTT%20Product%20Image.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/IDNTT%20Product%20Image.jpg",
     quote:
       "Not every brand deserves a place. IDNTT was built to curate identities.",
     description: [
@@ -59,8 +61,9 @@ export const projectsData: Project[] = [
     title: "MERASCORP LLP",
     category: "REAL-ESTATE WEBSITE REVAMP",
     tags: ["WEBSITE REVAMP", "BUSINESS STRATEGY", "WEBSITE DESIGN"],
-    imagePath: "/projects/MerasCorp LLP.jpg",
-    mainImage: "/projects/MerasCorp LLP Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Merascorp%20LLP.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Merascorp%20LLP.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Merascorp%20LLP.jpg",
     quote:
       "Imagine a user visiting the website for the first time. 'Ye toh bas... chhodo yaar.'",
     description: [
@@ -102,8 +105,9 @@ export const projectsData: Project[] = [
     title: "NOVUS PRODUCT",
     category: "SMART RING APPLICATION",
     tags: ["WEBSITE REVAMP", "BUSINESS STRATEGY", "WEBSITE DESIGN"],
-    imagePath: "/projects/Novus Product.jpg",
-    mainImage: "/projects/Novus Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Novus%20Product.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Novus%20Product.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Novus%20Product.jpg",
     quote: "Not another fitness ring. A preventive health intelligence system.",
     description: [
       "Instead of flooding people with charts, numbers, and endless health metrics, Novus translates complex biological signals into clear actions—helping users understand what's happening inside their body before it becomes a problem.",
@@ -144,8 +148,9 @@ export const projectsData: Project[] = [
       "UX RESEARCH",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/Zuplon AI.jpg",
-    mainImage: "/projects/Zuplon AI Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Zuplon%20AI.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Zuplon%20AI.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Zuplon%20AI.jpg",
     quote: "An AI-first digital engineering partner.",
     description: [
       "Instead of offering generic development services, Zuplon AI helps businesses build, modernize, and scale digital products through AI, cloud engineering, DevOps, and custom software development—transforming complex business challenges into intelligent digital solutions.",
@@ -186,8 +191,9 @@ export const projectsData: Project[] = [
       "UX RESEARCH",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/ASTR Application.jpg",
-    mainImage: "/projects/ASTR Application Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/ASTR%20Application.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/ASTR%20Application.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/ASTR%20Application.jpg",
     quote:
       "An AI-powered educational robot designed to grow with every stage of a child's learning journey.",
     description: [
@@ -229,8 +235,9 @@ export const projectsData: Project[] = [
       "BUSINESS STRATEGY",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/Relicore Solutions.jpg",
-    mainImage: "/projects/Relicore Solutions Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Relicore%20Solutions.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Relicore%20Solutions.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Relicore%20Solutions.jpg",
     quote:
       "Relicore Services exists for businesses that expect more than just software.",
     description: [
@@ -277,8 +284,9 @@ export const projectsData: Project[] = [
       "WEBSITE DESIGN",
       "APPLICATION DESIGN",
     ],
-    imagePath: "/projects/Bestuarant Product.jpg",
-    mainImage: "/projects/Bestuarant Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Bestuarant%20Product.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Bestuarant%20Product.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Bestuarant%20Product.jpg",
     quote: "A connected restaurant ecosystem.",
     description: [
       "Bestuarent is an all-in-one restaurant commerce platform built to simplify how restaurants operate and how customers order food. Instead of relying on multiple disconnected tools for ordering, menu management, payments, and operations, Bestuarent brings everything together into a single connected ecosystem.",
@@ -365,8 +373,9 @@ export const projectsData: Project[] = [
       "UX RESEARCH",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/Valyouu Agency.jpg",
-    mainImage: "/projects/Valyouu Agency Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Valyouu%20Agengy.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Valyouu%20Agengy.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Valyouu%20Agengy.jpg",
     quote:
       "Valyouu is a creative agency built on the belief that every business deserves more than good design—it deserves meaningful value.",
     description: [
@@ -403,8 +412,9 @@ export const projectsData: Project[] = [
     title: "BODHIYO PRODUCT",
     category: "WEB PLATFORM",
     tags: ["PRODUCT DESIGN", "UX STRATEGY", "WIREFRAMING", "UI UX"],
-    imagePath: "/projects/Bodhiyo Product.jpg",
-    mainImage: "/projects/Bodhiyo Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Bodhiyo%20Product.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Bodhiyo%20Product%20(1).jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Bodhiyo%20Product%20(2).jpg",
     quote: "A digital identity for India's workforce.",
     description: [
       "Bodhiyo is a WhatsApp-first workforce platform built to transform how skilled workers create, share, and grow their professional identity. Instead of relying on paper resumes or informal references, the platform helps people build trusted digital profiles that represent their real experience, skills, and work history.",
@@ -457,8 +467,9 @@ export const projectsData: Project[] = [
       "BRAND-LED VISUAL IDENTITY",
       "MOBILE-FIRST DESIGN",
     ],
-    imagePath: "/projects/Ecoworld.jpg",
-    mainImage: "/projects/Ecoworld Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/ECOWORLD.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/ECOWORLD.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/ECOWORLD.jpg",
     quote:
       "Ecoworld redefines what a holiday home can be. Instead of offering another destination to visit, it creates a place to belong—a personalised living environment where architecture, nature, and individual lifestyle come together. Every home is shaped around its owner, making each experience deeply personal rather than universally designed.",
     description: [
@@ -490,8 +501,9 @@ export const projectsData: Project[] = [
     title: "SMCCH EDU",
     category: "EDUCATIONAL WEBSITE REVAMP",
     tags: ["UX RESEARCH", "UX STRATEGY", "WEBSITE DESIGN", "BUSINESS STRATEGY"],
-    imagePath: "/projects/SMCCH Edu.jpg",
-    mainImage: "/projects/SMCCH Edu Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/smcgh%20edu.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/smcgh%20edu.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/smcgh%20edu.jpg",
     quote: "Building the digital foundation of a modern medical institution.",
     description: [
       "Shantabaa Medical College & General Hospital is a comprehensive digital platform designed to simplify the experience of students, faculty, patients, and administrators. Instead of relying on disconnected systems, the platform brings academics, hospital services, admissions, careers, departments, events, and institutional communication into a single connected ecosystem.",
@@ -532,8 +544,9 @@ export const projectsData: Project[] = [
     title: "WLC PRODUCT",
     category: "WEB PLATFORM",
     tags: ["PRODUCT RESEARCH", "UX STRATEGY", "WEB PLATFORM", "DASHBOARD"],
-    imagePath: "/projects/WLC Product.jpg",
-    mainImage: "/projects/WLC Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/wlc%20product.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/wlc%20product.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/wlc%20product.jpg",
     quote: "Not just a member platform. An executive leadership ecosystem.",
     description: [
       "Instead of managing members, leads, events, and applications across disconnected tools, WLC brings the entire leadership journey into one intelligent platform—helping the team operate with clarity, precision, and confidence.",
@@ -589,8 +602,9 @@ export const projectsData: Project[] = [
     title: "PTH APPLICATION",
     category: "HIRING PLATFORM",
     tags: ["PRODUCT RESEARCH", "WEBSITE DESIGN", "APPLICATION DESIGN"],
-    imagePath: "/projects/PTH Application.jpg",
-    mainImage: "/projects/PTH Application Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/pth%20application.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/pth%20application.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/pth%20application.jpg",
     quote:
       "Power To Hire is an AI-powered recruitment platform built to simplify every stage of the hiring journey. The experience was reimagined to help recruiters move faster, collaborate better, and make confident hiring decisions through intelligent workflows, automation, and a modern product experience.",
     description: [
@@ -640,8 +654,9 @@ export const projectsData: Project[] = [
       "APPLICATION DESIGN",
       "WEBSITE DESIGN",
     ],
-    imagePath: "/projects/My Hub Product.jpg",
-    mainImage: "/projects/My Hub Product Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/My%20Hub%20pRODUCT.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/My%20Hub%20pRODUCT.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/My%20Hub%20pRODUCT.jpg",
     quote: "A connected digital commerce ecosystem.",
     description: [
       "MyHub is an all-in-one digital commerce platform built to connect customers, retailers, drivers, and enterprises through a single intelligent ecosystem. Instead of relying on multiple disconnected applications for shopping, POS, rides, deliveries, and business management, MyHub brings everything together into one seamless platform.",
@@ -704,8 +719,9 @@ export const projectsData: Project[] = [
       "APPLICATION DESIGN",
       "WEBSITE DESIGN",
     ],
-    imagePath: "/projects/Kisaan Parivar.jpg",
-    mainImage: "/projects/Kisaan Parivar Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/KISSAN%20PARIVARKISSAN%20PARIVAR.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/KISSAN%20PARIVARKISSAN%20PARIVAR.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/KISSAN%20PARIVARKISSAN%20PARIVAR.jpg",
     quote: "A LEADING CORPORATE ORGANIC FARMING ECOSYSTEM",
     description: [
       "KISAAN PARIVAR IS ONE OF INDIA'S LEADING CORPORATE ORGANIC FARMING COMPANIES, COMMITTED TO BUILDING A SUSTAINABLE AGRICULTURAL ECOSYSTEM THAT CONNECTS FARMERS, INVESTORS, CONSUMERS, AND GLOBAL MARKETS. THROUGH SCIENTIFIC FARMING PRACTICES, MODERN INFRASTRUCTURE, AND ORGANIC CULTIVATION, THE COMPANY DELIVERS HIGH-QUALITY PRODUCE WHILE PROMOTING LONG-TERM ENVIRONMENTAL RESPONSIBILITY.",
@@ -746,8 +762,10 @@ export const projectsData: Project[] = [
     title: "LAXMI DEVELOPERS",
     category: "REAL-ESTATE WEBSITE REVAMP",
     tags: ["WEBSITE REVAMP", "BUSINESS STRATEGY", "WEBSITE DESIGN"],
-    imagePath: "/projects/Laxmi Developers.jpg",
-    mainImage: "/projects/Laxmi Developers Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Laxmi%20Developers.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Laxmi%20Developers.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Laxmi%20Developers.jpg",
+
     quote: "A modern digital experience for a trusted real estate brand.",
     description: [
       "Laxmi Developers is a real estate company dedicated to developing premium residential and commercial spaces with a strong focus on quality, innovation, transparency, and customer satisfaction. With a vision to create sustainable communities and lasting value, the company delivers thoughtfully planned projects that meet the evolving needs of modern homebuyers and investors.",
@@ -793,8 +811,10 @@ export const projectsData: Project[] = [
       "BUSINESS STRATEGY",
       "APPLICATION DESIGN",
     ],
-    imagePath: "/projects/Sherpal AI.jpg",
-    mainImage: "/projects/Sherpal AI Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/sherpal%20ai.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/sherpal%20ai.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/sherpal%20ai.jpg",
+
     quote: "A modern AI-powered learning experience for SAT preparation.",
     description: [
       "Sherpal AI is an AI-powered EdTech platform built to help high school students prepare for the SAT through personalized learning, adaptive assessments, and intelligent AI coaching. The platform focuses on improving student performance, building confidence, and delivering a highly engaging digital learning experience.",
@@ -832,8 +852,10 @@ export const projectsData: Project[] = [
       "BUSINESS STRATEGY",
       "WEBSITE DESIGN",
     ],
-    imagePath: "/projects/Where2Invest.jpg",
-    mainImage: "/projects/Where2Invest Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/wHERE2INVEST.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/wHERE2INVEST.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/wHERE2INVEST.jpg",
+
     quote: "A modern investment platform built for smarter wealth creation.",
     description: [
       "Where2Invest is a fintech investment platform designed to help individuals and businesses make informed financial decisions. The platform offers a wide range of investment solutions, including mutual funds, portfolio management, retirement planning, bonds, insurance advisory, and alternative investments through a seamless digital experience.",
@@ -875,8 +897,10 @@ export const projectsData: Project[] = [
       "UX RESEARCH",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/Zuplon Website.jpg",
-    mainImage: "/projects/Zuplon Website Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/zuplon%20website.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/zuplon%20website.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/zuplon%20website.jpg",
+
     quote:
       "A modern technology company building scalable digital products and enterprise solutions.",
     description: [
@@ -919,8 +943,10 @@ export const projectsData: Project[] = [
       "BUSINESS STRATEGY",
       "WEBSITE DESIGN",
     ],
-    imagePath: "/projects/Shares Bazaar.jpg",
-    mainImage: "/projects/Shares Bazaar Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/shares%20bazaar.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/shares%20bazaar.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/shares%20bazaar.jpg",
+
     quote:
       "A modern fintech platform designed to simplify investment research, market analysis, and digital wealth management through data-driven tools and intuitive user experiences.",
     description: [
@@ -983,8 +1009,10 @@ export const projectsData: Project[] = [
     title: "ROADBEE",
     category: "PREMIUM BIKER WEBSITE DESIGN",
     tags: ["WEBSITE REVAMP", "BUSINESS STRATEGY", "WEBSITE DESIGN"],
-    imagePath: "/projects/Roadbee.jpg",
-    mainImage: "/projects/Roadbee Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/Roadbee.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/Roadbee.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/Roadbee.jpg",
+
     quote:
       "A modern motorcycle companion platform designed to help riders track their journeys, explore events, manage ownership costs, and connect with a growing biking community.",
     description: [
@@ -1027,8 +1055,10 @@ export const projectsData: Project[] = [
       "UX STRATEGY",
       "APPLICATION DESIGN",
     ],
-    imagePath: "/projects/Tariff Tracker.jpg",
-    mainImage: "/projects/Tariff Tracker Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/tariff%20TRACKER.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/tariff%20TRACKER.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/tariff%20TRACKER.jpg",
+
     quote:
       "Tariff Tracker is a global trade intelligence platform designed to help businesses navigate international tariffs, discover verified trade partners, and streamline cross-border decision-making.",
     description: [
@@ -1067,8 +1097,10 @@ export const projectsData: Project[] = [
       "UX RESEARCH",
       "RESPONSIVE DESIGN",
     ],
-    imagePath: "/projects/Orion Stars.jpg",
-    mainImage: "/projects/Orion Stars Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/ORIAN%20STARS.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/ORIAN%20STARS.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/ORIAN%20STARS.jpg",
+
     quote:
       "A modern online gaming platform built to deliver an engaging, rewarding, and seamless entertainment experience across desktop and mobile devices.",
     description: [
@@ -1102,8 +1134,10 @@ export const projectsData: Project[] = [
     title: "MARV",
     category: "WEBSITE DESIGN",
     tags: ["WEBSITE DESIGN", "UX RESEARCH", "RESPONSIVE DESIGN"],
-    imagePath: "/projects/Marv.jpg",
-    mainImage: "/projects/Marv Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/MARV.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/MARV.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/MARV.jpg",
+
     quote:
       "A next-generation Web3 platform built to connect creators, collectors, and digital communities through secure blockchain-powered experiences.",
     description: [
@@ -1137,8 +1171,10 @@ export const projectsData: Project[] = [
     title: "WORLD DESIGN",
     category: "NFT COLLECTION CENTER",
     tags: ["WEBSITE DESIGN", "UX RESEARCH", "RESPONSIVE DESIGN"],
-    imagePath: "/projects/World Design.jpg",
-    mainImage: "/projects/World Design Image.jpg",
+    imagePath: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Imagepath/world%20design.jpg",
+    mainImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mainimage/world%20design.jpg",
+    mobileImage: "https://cdn.jsdelivr.net/gh/Karthi0402/portfolio-assets@main/Mobileimage/world%20design.jpg",
+
     quote:
       "A global NFT marketplace designed to connect creators, collectors, and digital communities through a seamless Web3 experience.",
     description: [
@@ -1162,7 +1198,7 @@ export const projectsData: Project[] = [
     team: [
       {
         label: "VINAY Sreeyapu (Product Designer)",
-        url: "",
+        url: "https://www.linkedin.com/in/vinayreddysr",
       },
       {
         label: "MANAMI (Dev)",
@@ -1170,75 +1206,4 @@ export const projectsData: Project[] = [
       },
     ],
   },
-
-  // {
-  //   id: "vital-space",
-  //   title: "VITAL SPACE",
-  //   category: "REAL-ESTATE WEBSITE",
-  //   tags: ["WEBSITE DESIGN", "UX RESEARCH", "RESPONSIVE DESIGN"],
-  //   imagePath: "/projects/Vital Space.jpg",
-
-  //   // Opens directly in a new tab
-  //   external: true,
-  //   externalUrl: "https://vitalspace.in/",
-  // }
-
-  // {
-  //   id: "desineeds",
-  //   title: "DESINEEDS",
-  //   category: "LOCAL MARKETPLACE APPLICATION",
-  //   tags: ["APPLICATION DESIGN", "UX RESEARCH", "RESPONSIVE DESIGN"],
-  //   imagePath: "/projects/DesiNeeds.jpg",
-
-  //     // Opens directly in a new tab
-  //   external: true,
-  //   externalUrl: "https://www.behance.net/gallery/218352301/Desi-Bazaar-App-Design",
-  // }
-
-  // {
-  //   id: "bitsnift",
-  //   title: "BITSNIFT",
-  //   category: "NFT COLLECTION CENTER",
-  //   tags: [
-  //     "WEBSITE DESIGN",
-  //     "CONTENT STRATEGY",
-  //     "UX RESEARCH",
-  //     "RESPONSIVE DESIGN",
-  //   ],
-
-  //       // Opens directly in a new tab
-  //   external: true,
-  //   externalUrl: "https://www.behance.net/gallery/218561109/BITSI-NFT-Project",
-  // }
-
-  // {
-  //   id: "deltahrms",
-  //   title: "DELTA HRMS",
-  //   category: "HR SOFTWARE PLATFORM",
-  //   tags: [
-  //     "WEBSITE DESIGN",
-  //     "PRODUCT RESEARCH",
-  //     "UX STRATEGY",
-  //     "RESPONSIVE DESIGN",
-  //   ],
-
-  //         // Opens directly in a new tab
-  //   external: true,
-  //   externalUrl: "https://www.behance.net/gallery/218567881/Delta-HRMS-Dashboard-UI",
-  // }
-
-  // {
-  //   id: "sharylytics",
-  //   title: "SHARYLYTICS",
-  //   category: "INVESTING WEBSITE DESIGN",
-  //   tags: [
-  //     "WEBSITE DESIGN",
-  //     "UX RESEARCH",
-  //     "RESPONSIVE DESIGN",
-  //   ],
-
-  //         // Opens directly in a new tab
-  //   external: true,
-  //   externalUrl: "https://www.behance.net/gallery/237249987/Sharyalytics-Halal-Investing",
-  // }
 ];

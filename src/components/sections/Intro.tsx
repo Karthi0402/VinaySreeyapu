@@ -155,7 +155,7 @@ export default function Intro() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="relative w-full min-h-fit md:min-h-screen flex flex-col justify-center px-6 md:px-16 py-16 sm:py-20 md:py-24 gap-5 sm:gap-6 md:gap-8"
+      className="relative w-full min-h-fit md:min-h-screen flex flex-col justify-center px-6 md:px-16 py-20 sm:py-24 md:py-28 gap-5 sm:gap-6 md:gap-8"
     >
       {/* ROW 1: NAMASTE — from the right */}
       <div className="flex flex-col items-end w-full">
