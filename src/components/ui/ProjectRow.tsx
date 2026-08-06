@@ -94,15 +94,18 @@ export default function ProjectRow({ project }: ProjectRowProps) {
                 src={project.imagePath}
                 alt={project.title}
                 className="
-                  relative
-                  w-[320px]
-                  rounded-2xl
-                  shadow-[0_30px_90px_rgba(0,0,0,0.45)]
-                  border
-                  border-white/10
-                  object-cover
-                  select-none
-                "
+    relative
+    w-[240px]
+    lg:w-[300px]
+    xl:w-[380px]
+    2xl:w-[460px]
+    rounded-2xl
+    shadow-[0_30px_90px_rgba(0,0,0,0.45)]
+    border
+    border-white/10
+    object-cover
+    select-none
+  "
               />
             </div>
           </motion.div>
@@ -110,7 +113,7 @@ export default function ProjectRow({ project }: ProjectRowProps) {
       </AnimatePresence>
 
       {/* Title & Category Wrapper */}
-      <div className="relative z-20 flex flex-col-reverse md:flex-row md:items-end justify-between w-full gap-2 md:gap-0">
+      <div className="relative z-20 flex flex-col-reverse md:flex-row md:items-end justify-between w-full gap-4 md:gap-0">
         <motion.h3
           whileHover={{ x: 12 }}
           transition={{ duration: 0.35 }}
@@ -133,7 +136,7 @@ export default function ProjectRow({ project }: ProjectRowProps) {
       </div>
 
       {/* Tags */}
-      <div className="relative z-20 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-3 mt-8 md:mt-6 overflow-hidden">
+      <div className="relative z-20 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-3 mt-16 md:mt-8">
         {project.tags.map((tag, index) => (
           <div key={tag} className="flex items-center gap-3">
             <span

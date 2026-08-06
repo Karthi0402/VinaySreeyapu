@@ -1,11 +1,10 @@
 // src/components/sections/GetInTouch.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback, useLayoutEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import GradientText from "../ui/GradientText";
 import TypingText from "../ui/TypingText";
-import { useFitText } from "../../hooks/Usefittext";
 
 const greetings = [
   { text: "안녕하세요", lang: "ko" },
@@ -77,6 +76,88 @@ const socialContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.4 } },
 };
+
+/**
+ * Drop-in replacement for the old `useFitText` import — same name, same
+ * return shape (`containerRef`, `textRef`, `fontSize`), so nothing else
+ * in this file had to change. This is a self-contained, mobile-safe
+ * version that fixes the "not showing on some mobile screens" bug:
+ *
+ * 1. SSR-safe — never touches `window`/`document` on the server.
+ * 2. Starts from a CSS `clamp()` fallback instead of 0/undefined, so the
+ *    email is ALWAYS visible on first paint, even before JS measures
+ *    anything.
+ * 3. Waits for `document.fonts.ready` before trusting a measurement —
+ *    measuring against a fallback system font (common on slower mobile
+ *    connections where the custom font arrives late) gives the wrong
+ *    width and was very likely the root cause here.
+ * 4. Uses ResizeObserver on the actual container, not just `window`
+ *    resize, so it recalculates on orientation change / mobile browser
+ *    chrome show-hide, which don't reliably fire a resize event.
+ * 5. Clamps the result so it can never compute to 0, NaN, or overflow.
+ */
+function useFitText({
+  baseFontSize = 100,
+  minFontSize = 24,
+  maxFontSize = 102,
+}: {
+  baseFontSize?: number;
+  minFontSize?: number;
+  maxFontSize?: number;
+}) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  const fallback = `clamp(${minFontSize}px, 8vw, ${maxFontSize}px)`;
+  const [fontSize, setFontSize] = useState<number | string>(fallback);
+
+  const recalc = useCallback(() => {
+    const container = containerRef.current;
+    const measure = textRef.current;
+    if (!container || !measure) return;
+
+    const containerWidth = container.offsetWidth;
+    const textWidth = measure.scrollWidth;
+
+    if (!containerWidth || !textWidth) return;
+
+    const computed = (containerWidth / textWidth) * baseFontSize;
+    if (!Number.isFinite(computed) || computed <= 0) return;
+
+    const clamped = Math.min(maxFontSize, Math.max(minFontSize, computed));
+    setFontSize(clamped);
+  }, [baseFontSize, minFontSize, maxFontSize]);
+
+  useLayoutEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let cancelled = false;
+    const run = () => {
+      if (!cancelled) recalc();
+    };
+
+    run();
+
+    if ("fonts" in document) {
+      document.fonts.ready.then(run).catch(() => {});
+    }
+
+    const ro = new ResizeObserver(() => run());
+    if (containerRef.current) ro.observe(containerRef.current);
+
+    window.addEventListener("resize", run);
+    window.addEventListener("orientationchange", run);
+
+    return () => {
+      cancelled = true;
+      ro.disconnect();
+      window.removeEventListener("resize", run);
+      window.removeEventListener("orientationchange", run);
+    };
+  }, [recalc]);
+
+  return { containerRef, textRef, fontSize };
+}
 
 export default function GetInTouch() {
   const [greetingIndex, setGreetingIndex] = useState(0);
@@ -157,8 +238,14 @@ export default function GetInTouch() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Main Title: Email — fills 100% of the available width at any screen size */}
-        <div ref={containerRef} className="w-full">
+        {/* Main Title: Email — fills 100% of the available width at any screen size.
+            overflow-x-auto is a last-resort safety net: on an unusually narrow
+            device where even minFontSize can't fully fit, the text stays fully
+            visible and scrollable instead of silently clipping/disappearing. */}
+        <div
+          ref={containerRef}
+          className="w-full overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
           {/* Hidden measuring node: same font/tracking as the visible title,
               rendered at baseFontSize, used only to compute scrollWidth. */}
           <span

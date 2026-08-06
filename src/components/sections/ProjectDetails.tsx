@@ -17,14 +17,12 @@ const TableRow = ({
   label: string;
   children: React.ReactNode;
 }) => (
-  <div className="flex flex-col sm:flex-row gap-3 sm:gap-8 py-6 border-b border-[#FFD100]/20">
-    {/* Label */}
-    <span className="w-32 font-brand text-[14px] leading-normal tracking-normal uppercase text-[#BA9C12] shrink-0">
+  <div className="grid grid-cols-1 sm:grid-cols-[8rem_1fr] items-center gap-5 sm:gap-18 py-6 px-6 border-b border-[#FFD100]/20">
+    <span className="font-brand text-[14px] uppercase text-[#BA9C12]">
       {label}
     </span>
 
-    {/* Value */}
-    <div className="flex-1 flex flex-col gap-2 font-brand text-[12px] md:text-[14px] leading-normal tracking-normal uppercase text-[#BA9C12]">
+    <div className="flex flex-col gap-2 font-brand text-[12px] md:text-[14px] uppercase text-[#BA9C12]">
       {children}
     </div>
   </div>
